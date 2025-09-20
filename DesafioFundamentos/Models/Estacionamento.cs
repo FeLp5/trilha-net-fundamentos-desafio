@@ -16,6 +16,18 @@ namespace DesafioFundamentos.Models
         {
             // Implementado!!!!!
             Console.WriteLine("Digite a placa do veículo para estacionar:");
+            string placa = Console.ReadLine();
+
+            if (veiculos.Any(x => x.ToUpper() == placa.ToUpper()))
+            {
+                Console.WriteLine("Já existe um veículo com essa placa estacionado!");
+            }
+            else
+            {
+                veiculos.Add(placa.ToUpper());
+
+            }
+            
         }
 
         public void RemoverVeiculo()
@@ -24,7 +36,7 @@ namespace DesafioFundamentos.Models
 
             // Pedir para o usuário digitar a placa e armazenar na variável placa
             // *IMPLEMENTE AQUI*
-            string placa = "";
+            string placa = Console.ReadLine();
 
             // Verifica se o veículo existe
             if (veiculos.Any(x => x.ToUpper() == placa.ToUpper()))
@@ -35,10 +47,12 @@ namespace DesafioFundamentos.Models
                 // TODO: Realizar o seguinte cálculo: "precoInicial + precoPorHora * horas" para a variável valorTotal                
                 // *IMPLEMENTE AQUI*
                 int horas = 0;
-                decimal valorTotal = 0; 
+                int.TryParse(Console.ReadLine(), out horas);
+                decimal valorTotal = precoInicial + (precoPorHora * horas);
 
                 // TODO: Remover a placa digitada da lista de veículos
                 // *IMPLEMENTE AQUI*
+                veiculos.Remove(placa.ToUpper());
 
                 Console.WriteLine($"O veículo {placa} foi removido e o preço total foi de: R$ {valorTotal}");
             }
@@ -50,12 +64,18 @@ namespace DesafioFundamentos.Models
 
         public void ListarVeiculos()
         {
+            int index = 0;
             // Verifica se há veículos no estacionamento
             if (veiculos.Any())
             {
                 Console.WriteLine("Os veículos estacionados são:");
                 // TODO: Realizar um laço de repetição, exibindo os veículos estacionados
                 // *IMPLEMENTE AQUI*
+                foreach (string veiculo in veiculos)
+                {
+                    index++;
+                    Console.WriteLine($"{index}: {veiculo}");
+                }
             }
             else
             {
