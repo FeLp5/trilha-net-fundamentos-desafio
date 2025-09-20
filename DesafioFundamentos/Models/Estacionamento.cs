@@ -20,7 +20,7 @@ namespace DesafioFundamentos.Models
 
             if (veiculos.Any(x => x.ToUpper() == placa.ToUpper()))
             {
-                Console.WriteLine("Já existe um veículo com essa placa estacionado!");
+                Console.WriteLine("Já existe um veículo com essa placa estacionado! 😕");
             }
             else
             {
